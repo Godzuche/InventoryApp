@@ -17,7 +17,10 @@ package com.example.inventory
 
 import android.app.Application
 import com.example.inventory.data.ItemRoomDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 
 class InventoryApplication : Application(){
-    val database by lazy { ItemRoomDatabase.getDatabase(this) }
+    private val coroutineScope = CoroutineScope(SupervisorJob())
+    val database by lazy { ItemRoomDatabase.getDatabase(this, coroutineScope) }
 }

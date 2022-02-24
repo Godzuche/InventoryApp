@@ -19,4 +19,7 @@ interface ItemDao {
 
     @Query("SELECT * FROM item ORDER BY name ASC")
     fun getItems(): Flow<List<Item>>
+
+    @Query("DELETE FROM item")
+    suspend fun deleteAll()
 }
